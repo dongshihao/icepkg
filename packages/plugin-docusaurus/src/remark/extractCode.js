@@ -8,6 +8,7 @@ const DEMO_PREFIX = 'IcePkgDemo';
 const rootDir = process.cwd();
 const previewerComponentPath = path.join(__dirname, '../Previewer/index.js');
 const demoDir = path.join(rootDir, '.docusaurus/demos');
+const pagesDir = path.join(rootDir, '.docusaurus/pages');
 
 /** Use the md5 value of docPath */
 const uniqueFilename = (originalDocPath, count) => {
@@ -45,6 +46,23 @@ const plugin = () => {
         const resolvedCode = resolveImports(node.value, vfile.path);
 
         fse.writeFileSync(filePath, resolvedCode, 'utf-8');
+
+        // TEST: 生成 pages
+        fse.ensureDirSync(pagesDir);
+        const pageDemo = path.join(pagesDir, `${demoFilename}.jsx`);
+        const pageCode = `
+          import * as React from 'react';
+          import Haha from '${filePath}'
+
+          export default () => {
+            return (
+              <div>
+                <Haha />
+              </div>
+            )
+          }
+        `;
+        fse.writeFileSync(pageDemo, pageCode, 'utf-8');
 
         demosMeta.push({
           code: node.value,
