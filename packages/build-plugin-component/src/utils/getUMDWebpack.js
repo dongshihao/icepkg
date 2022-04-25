@@ -33,11 +33,11 @@ module.exports = ({ context, compileOptions, extNames, hasMain }) => {
         commonjs2: 'react-dom',
         amd: 'react-dom',
       },
-      '@alifd/next': {
+      'cn-next': {
         root: 'Next',
-        commonjs: '@alifd/next',
-        commonjs2: '@alifd/next',
-        amd: '@alifd/next',
+        commonjs: 'cn-next',
+        commonjs2: 'cn-next',
+        amd: 'cn-next',
       },
       moment: {
         root: 'moment',

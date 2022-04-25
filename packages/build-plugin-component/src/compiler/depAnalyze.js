@@ -14,6 +14,7 @@ const defaultDynamicImportLibraries = [
   'antd',
   '@alifd/next',
   '@alife/next',
+  'cn-next',
   '@icedesign/base',
 ];
 
@@ -23,7 +24,7 @@ function analyzePackage(pkg, basicComponents) {
   const libraryNames = [];
   if (basicComponents) {
     Object.keys({ ...dependencies, ...devDependencies, ...peerDependencies }).forEach((depName) => {
-      // basic component: antd、@alifd/next、@alife/next、@icedesign/base
+      // basic component: antd、@alifd/next、@alife/next、cn-next、@icedesign/base
       if (
         [
           ...defaultDynamicImportLibraries,
@@ -50,6 +51,7 @@ function filterDeps({ deps, rootDir, basicComponents }) {
       /^@alife\/next\/(lib|es)\/([^/]+)/,
       /@alifd\/.*/,
       /^@alifd\/next\/(lib|es)\/([^/]+)/,
+      /^cn-next\/(lib|es)\/([^/]+)/,
       /@ali\/ice-.*/,
       /antd\/.*/,
     ];

@@ -1,5 +1,5 @@
 {
-  "name": "build-plugin-component",
+  "name": "cn-build-plugin-component",
   "version": "1.10.0",
   "description": "build plugin for component development",
   "main": "src/index.js",
